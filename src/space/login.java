@@ -16,6 +16,7 @@ import java.util.Map;
 public class login extends javax.swing.JPanel {
 
     Map<Integer, String> usuariosR = new HashMap<Integer, String>();
+    int i =0;
     /**
      * Creates new form login
      */
@@ -24,8 +25,8 @@ public class login extends javax.swing.JPanel {
         initComponents();
     }
 
-    public void mapa(HashMap<Integer,String>mapa){
-        this.usuariosR=mapa;
+    public void mapa(int contra,String usu){
+       usuariosR.put(contra, usu);
     }
     /**
      * This method is called from within the constructor to initialize the form.
