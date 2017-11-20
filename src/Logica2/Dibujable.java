@@ -3,14 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Principal;
+package Logica2;
+
+import java.awt.Graphics;
 
 /**
  *
  * @author JUAN DAVID
  */
-public class main {
-    public static void main(String[] args){
-        
-    }
+public interface Dibujable {
+       /**
+     * recibe y permite crear objetos
+     * @param dw 
+     */
+    public void dibujar(Graphics dw);
 }
