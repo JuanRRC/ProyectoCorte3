@@ -42,8 +42,10 @@ public class main {
         NaveGrafico nave = new NaveGrafico(cor3,cor4,cor5,Color.YELLOW);
         
         ArregloDeobjetos.add(nave);
+        
           
             Panel nuestroPanel = new Panel(ArregloDeobjetos);
+            nuestroPanel.refNave(nave);
                 nuestraventana.add(nuestroPanel);
                 nuestraventana.setSize(800,600);
                 nuestraventana.setBackground(Color.darkGray);
