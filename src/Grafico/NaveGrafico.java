@@ -15,26 +15,18 @@ import Logica2.Nave;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Polygon;
-public class NaveGrafico extends Nave implements Dibujable  {
-      
-     Color color;
-    /**
-     * contienen coordenadas y el color de el objeto 
-     * @param a
-     * @param b
-     * @param c
-     * @param uncolor 
-     */
+public class NaveGrafico extends Nave implements Dibujable {
+
+    Color color;
+    
     public NaveGrafico(Coordenada a, Coordenada b, Coordenada c, Color uncolor){
         super(a,b,c);
         this.color=uncolor;
                 }
     
     
-    
-    
     /**
-     * poligono dibujado sera la nave los dos arreglos tienen las coordenadas en x y en Y
+     * poligono dibujado sera la nave
      * @param dw 
      */
     @Override
@@ -46,6 +38,7 @@ public class NaveGrafico extends Nave implements Dibujable  {
         Polygon p = new Polygon(x,y,3);
           dw.fillPolygon(p);
     }
+    
     /**
      * se mueve la coordenada y se pinta 
      * @param dw
@@ -59,7 +52,7 @@ public class NaveGrafico extends Nave implements Dibujable  {
         Polygon p = new Polygon(x,y,3);
           dw.fillPolygon(p);
     }
-     /**
+    /**
      * metodo que generara el disparo
      * @return 
      */
@@ -68,7 +61,7 @@ public class NaveGrafico extends Nave implements Dibujable  {
         CirculoGrafico bala = new  CirculoGrafico(salida,10,Color.RED);
         return bala;
     }
-     /**
+    /**
      * metodo modifica lo creado
      */
     public void Ciclo(){

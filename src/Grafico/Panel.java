@@ -21,52 +21,49 @@ import javax.swing.JPanel;
  * @author JUAN DAVID
  */
 public class Panel extends JPanel implements KeyListener{
-        ArrayList v;
-        ArrayList ast = new ArrayList();
-        NaveGrafico nave ;
-        Coordenada movimientoIzq = new Coordenada(-25,0);//ejes X y ejes Y
+    /**
+     * CONTIENE EL POLIGONO v
+     */
+    ArrayList v;
+    ArrayList ast = new ArrayList();
+    NaveGrafico nave ;
+    Coordenada movimientoIzq = new Coordenada(-25,0);//ejes X y ejes Y
     Coordenada movimientoDer = new Coordenada(25,0);
     Coordenada movimientoNulo = new Coordenada(0,0);// al soltar la tecla 
     
-       int contadorAsteriodes =5;
+   int contadorAsteriodes =5;
+   
     
-     /**
-     * CONTIENE EL POLIGONO v
-     */
-    /**
- * constructor de la clase panel recive una lista 
- * van a venir los objetos a dibujar en el panel desde el main se hara mas  adelante
+/**
+ * constructor de la clase panel
  * @param vectordeO 
  */
     public Panel(ArrayList vectordeO){
         this.v = vectordeO;
-     
         this.addKeyListener(this);//escuchador
         setFocusable(true);//espera constante mente las entradas 
+        
     }
     /**
-     * metodo recibe como parametro un grafico 
+     * metodo que nos permitira pintar y crear objetos a medida que dibuja mientras los elemtos 
+     * no se acaben en el arreglo
+     * @param g 
      */
-public void paint(Graphics g){
+    public void paint(Graphics g){
         Dimension d = getSize();
         Image Imagen = createImage(d.height,d.width);
         Graphics buff = Imagen.getGraphics();
         Dibujable dib;
         for (int i=0;i<v.size();i++){
             dib =(Dibujable)v.get(i);
-            //pinta y la repinta para evitar el bug
             dib.dibujar(buff);
             g.drawImage(Imagen, 0, 0, null);
         }
     }
-/**
- * llama al metodo paint
- * @param g 
- */
 public void update(Graphics g){
     paint(g);
 }
-     @Override
+    @Override
     public void keyTyped(KeyEvent ke) {
     }
 /**
@@ -88,9 +85,9 @@ public void update(Graphics g){
             this.nave.mover(movimientoDer);
             
         }
-          if(tecla == KeyEvent.VK_Q ){//Dispara
+          if(tecla == KeyEvent.VK_SPACE ){//Dispara
            
-         CirculoGrafico bala = nave.Bala1();
+          CirculoGrafico bala = nave.Bala1();
           nave.balas.add(bala);
           v.add(bala);
             
@@ -112,17 +109,20 @@ public void update(Graphics g){
            
         }
     }
-     public void refNave(NaveGrafico n){
+    
+    
+    public void refNave(NaveGrafico n){
         this.nave=n;
     }
-       public void refAst(RectanguloGrafico a,RectanguloGrafico b,RectanguloGrafico c,RectanguloGrafico d,RectanguloGrafico e ){
+    
+    public void refAst(RectanguloGrafico a,RectanguloGrafico b,RectanguloGrafico c,RectanguloGrafico d,RectanguloGrafico e ){
        ast.add(a);
        ast.add(b);
         ast.add(c);
         ast.add(d);
        ast.add(e);
     }
-       /**
+    /**
      * este metodo controla el choque de las balas que suben y bajan
      */
    public void Colision1(){
@@ -157,10 +157,13 @@ public void update(Graphics g){
         }
         }
     }
-     public void run(){
+    /**
+     * metodo con el hilo de ejecucion
+     */
+    public void run(){
         while(true){
             
-          try{
+            try{
                 if(!nave.balas.isEmpty()){
                     nave.Ciclo();
                     
@@ -188,7 +191,6 @@ public void update(Graphics g){
                 Thread.sleep(50);// se duerme cada 50 ml segundos
             }catch(InterruptedException err){System.out.println(err);}
             repaint();
-            
             
         }
     }

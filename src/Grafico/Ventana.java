@@ -18,17 +18,13 @@ import javax.swing.JFrame;
  * se implementa el WindowListener para poder cerrar la ventana
  */
 public class Ventana extends JFrame implements WindowListener{
-    /**
-     * llama al constructor padre y se fijahasta recibir un string
-     * @param title 
-     */
-      public Ventana (String title){
+    public Ventana (String title){
         super(title);
         setSize(800,600);
         addWindowListener(this);
     }
 
-     @Override
+    @Override
     public void windowOpened(WindowEvent we) {
     }
 
@@ -55,5 +51,4 @@ public class Ventana extends JFrame implements WindowListener{
     @Override
     public void windowDeactivated(WindowEvent we) {
     }
-    
 }
