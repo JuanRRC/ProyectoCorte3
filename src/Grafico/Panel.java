@@ -6,7 +6,10 @@
 package Grafico;
 import Logica2.Coordenada;
 import Logica2.Dibujable;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -40,17 +43,25 @@ public class Panel extends JPanel implements KeyListener{
     /**
      * metodo recibe como parametro un grafico 
      */
-     public void paint(Graphics g){
-        // dara un entero de la cantidad de objetos que tenga el arreglo
-        // dibuja a medida que tenga el arreglo de objetos
+public void paint(Graphics g){
+        Dimension d = getSize();
+        Image Imagen = createImage(d.height,d.width);
+        Graphics buff = Imagen.getGraphics();
         Dibujable dib;
         for (int i=0;i<v.size();i++){
             dib =(Dibujable)v.get(i);
-            dib.dibujar(g);
-            
+            //pinta y la repinta para evitar el bug
+            dib.dibujar(buff);
+            g.drawImage(Imagen, 0, 0, null);
         }
-        
     }
+/**
+ * llama al metodo paint
+ * @param g 
+ */
+public void update(Graphics g){
+    paint(g);
+}
      @Override
     public void keyTyped(KeyEvent ke) {
     }
@@ -100,5 +111,11 @@ public class Panel extends JPanel implements KeyListener{
      public void refNave(NaveGrafico n){
         this.nave=n;
     }
-    
+     public void run(){
+        while(true){
+            
+          repaint();
+            
+        }
+    }
 }

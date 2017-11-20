@@ -50,6 +50,8 @@ public class main {
                 nuestraventana.setSize(800,600);
                 nuestraventana.setBackground(Color.darkGray);
                 nuestraventana.setVisible(true);
+                nuestroPanel.run
+        ();
       
     }
 }
