@@ -122,6 +122,41 @@ public void update(Graphics g){
         ast.add(d);
        ast.add(e);
     }
+       /**
+     * este metodo controla el choque de las balas que suben y bajan
+     */
+   public void Colision1(){
+        int i,j;
+        for (i=0;i<nave.balas.size();i++){
+           CirculoGrafico bala = (CirculoGrafico) nave.balas.get(i);  
+        
+       
+        
+        /**
+         * este for se encarga de eliminar las balas cada vez que se chocan comparando 
+         * los puntos de centro izquierda y derecha 
+         */
+      for(j=0;j<ast.size();j++){
+            
+            RectanguloGrafico aste =(RectanguloGrafico) ast.get(j);
+            Coordenada Corbala = new Coordenada (bala.getX(),bala.getY());
+            Coordenada Derecha = new Coordenada (aste.getX()+30,aste.getY());
+            Coordenada Izquierda = new Coordenada (aste.getX()-15,aste.getY());
+            Coordenada medio = new Coordenada(aste.getX(),aste.getY());
+            
+            if(Corbala.getX()>Izquierda.getX()&&Corbala.getX()<Derecha.getX()&&Corbala.getY()<medio.getY()){
+                aste.Pintar(Color.WHITE);
+               bala.Pintar(Color.WHITE);
+                bala.setY(-100);
+                aste.setY(-100);
+                nave.balas.remove(bala);
+                ast.remove(aste);
+                contadorAsteriodes --;
+            }
+            
+        }
+        }
+    }
      public void run(){
         while(true){
             
@@ -149,7 +184,7 @@ public void update(Graphics g){
                   nuevo.Ciclo();
                  contadorAsteriodes++; 
               }
-              // Colision1();
+               Colision1();
                 Thread.sleep(50);// se duerme cada 50 ml segundos
             }catch(InterruptedException err){System.out.println(err);}
             repaint();

@@ -50,5 +50,7 @@ public class RectanguloGrafico extends Rectangulo implements Dibujable {
         float x = this.getY();
         this.setY(x += 20);
     }
-    
+     public void Pintar(Color a){
+        this.color=a;
+    }
 }
