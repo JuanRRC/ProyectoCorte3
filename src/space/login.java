@@ -31,7 +31,7 @@ public class login extends javax.swing.JPanel {
         initComponents();
     }
     
-    public void datos(String nom,int con){
+    public boolean datos(String nom,int con){
         ArrayList<Jugadores> lista1 = repositorio.obtenerTodos();
         Iterator<Jugadores> it = lista1.iterator();
         System.out.println(nom+""+con);
@@ -42,16 +42,13 @@ public class login extends javax.swing.JPanel {
             if((con==num.getContraseña())){
                 
                 System.out.println(num.getNombreU()+"----- "+ num.getContraseña());
-                JOptionPane.showMessageDialog(null,"paso");
-                Play h = new Play();
                 i=lista1.size();
-                
-                
+                return true;    
             }
             i++;
         }
-        JOptionPane.showMessageDialog(null,"jodido");
         
+        return false;
     }
     
     /**
@@ -124,7 +121,17 @@ public class login extends javax.swing.JPanel {
         String nom=usuario.getText();
         String con=contraseña.getText();
         int contra= Integer.parseInt(con);
-        datos(nom,contra);
+        
+        if(datos(nom,contra)==false){
+            System.out.println("Por favor intentelo de nuevo");
+        }else{
+            if(datos(nom,contra)==true){
+                this.setVisible(false);
+                Principal p = new Principal();
+                p.setVisible(true);
+                
+            }
+        }
         
     }//GEN-LAST:event_iniciarActionPerformed
 

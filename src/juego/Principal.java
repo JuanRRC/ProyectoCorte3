@@ -19,9 +19,8 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
         
-        int y=bala.getY();
-        int x=bala.getX();
-        System.out.println(x+" "+y);
+        
+       
         
         /*
         posicion p = new posicion(bala,bala.getX(),bala.getY(),cubo);
@@ -43,30 +42,18 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cañon = new javax.swing.JLabel();
         cubo = new javax.swing.JLabel();
-        bala = new javax.swing.JLabel();
         dis = new javax.swing.JLabel();
         cañon1 = new javax.swing.JLabel();
-        bala1 = new javax.swing.JLabel();
-        cañon2 = new javax.swing.JLabel();
-        bala2 = new javax.swing.JLabel();
-        cañon3 = new javax.swing.JLabel();
-        bala3 = new javax.swing.JLabel();
-        cañon4 = new javax.swing.JLabel();
-        bala4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 500));
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
             }
         });
 
-        cañon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/juego/img/cañon.jpg"))); // NOI18N
-
-        cubo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/juego/img/i6.gif"))); // NOI18N
+        cubo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/juego/img/naved.jpg"))); // NOI18N
         cubo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 cuboFocusGained(evt);
@@ -78,100 +65,37 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        bala.setIcon(new javax.swing.ImageIcon(getClass().getResource("/juego/img/bala.png"))); // NOI18N
+        dis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/juego/img/disparoN.jpg"))); // NOI18N
 
-        dis.setText("O");
-
-        cañon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/juego/img/cañon.jpg"))); // NOI18N
-
-        bala1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/juego/img/bala.png"))); // NOI18N
-
-        cañon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/juego/img/cañon.jpg"))); // NOI18N
-
-        bala2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/juego/img/bala.png"))); // NOI18N
-
-        cañon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/juego/img/cañon.jpg"))); // NOI18N
-
-        bala3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/juego/img/bala.png"))); // NOI18N
-
-        cañon4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/juego/img/cañon.jpg"))); // NOI18N
-
-        bala4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/juego/img/bala.png"))); // NOI18N
+        cañon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/juego/img/nave.jpg"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(323, 323, 323)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cubo)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(dis)))
-                .addContainerGap(279, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cañon1)
+                        .addGap(216, 216, 216)
+                        .addComponent(cañon1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(bala1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cañon)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(bala)))
-                .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cañon2)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(bala2)))
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cañon3)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(bala3)))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cañon4)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(bala4)))
-                .addContainerGap())
+                        .addGap(332, 332, 332)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cubo)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(dis, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(249, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cañon)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bala))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cañon1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bala1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cañon2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bala2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cañon3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bala3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cañon4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bala4)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
-                .addComponent(dis)
+                .addComponent(cañon1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 291, Short.MAX_VALUE)
+                .addComponent(dis, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cubo)
-                .addGap(25, 25, 25))
+                .addGap(32, 32, 32))
         );
 
         pack();
@@ -230,35 +154,13 @@ public class Principal extends javax.swing.JFrame {
         d.start();
         }
         
-        if(evt.getKeyChar()=='x'){
-        posicion p1 = new posicion(bala1,bala1.getX(),bala1.getY(),cubo,dis);
+        
+        posicion p1 = new posicion(cañon1,cubo,dis);
         p1.datos();
         p1.start();
-        }
         
-        if(evt.getKeyChar()=='c'){
-        posicion p2 = new posicion(bala2,bala2.getX(),bala2.getY(),cubo,dis);
-        p2.datos();
-        p2.start();
-        }
         
-        if(evt.getKeyChar()=='v'){
-        posicion p3 = new posicion(bala3,bala3.getX(),bala3.getY(),cubo,dis);
-        p3.datos();
-        p3.start();
-        }
         
-        if(evt.getKeyChar()=='b'){
-        posicion p4 = new posicion(bala4,bala4.getX(),bala4.getY(),cubo,dis);
-        p4.datos();
-        p4.start();
-        }
-        
-        if(evt.getKeyChar()=='z'){
-        posicion p5 = new posicion(bala,bala.getX(),bala.getY(),cubo,dis);
-        p5.datos();
-        p5.start();
-        }
     }//GEN-LAST:event_formKeyPressed
 
     /**
@@ -267,16 +169,7 @@ public class Principal extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel bala;
-    private javax.swing.JLabel bala1;
-    private javax.swing.JLabel bala2;
-    private javax.swing.JLabel bala3;
-    private javax.swing.JLabel bala4;
-    private javax.swing.JLabel cañon;
     private javax.swing.JLabel cañon1;
-    private javax.swing.JLabel cañon2;
-    private javax.swing.JLabel cañon3;
-    private javax.swing.JLabel cañon4;
     private javax.swing.JLabel cubo;
     private javax.swing.JLabel dis;
     // End of variables declaration//GEN-END:variables

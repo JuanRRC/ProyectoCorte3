@@ -19,7 +19,7 @@ public class posicion extends Thread{
     
     
     int i=0;
-    JLabel bala,cubo,dis;
+    JLabel cañon,cubo,dis;
     int x,y;
     Principal principal;
 /**
@@ -30,9 +30,9 @@ public class posicion extends Thread{
  * @param cubo
  * @param dis 
  */    
-    public posicion(JLabel bala,int x,int y,JLabel cubo,JLabel dis){
+    public posicion(JLabel cañon,JLabel cubo,JLabel dis){
         this.cubo=cubo;
-        this.bala=bala;
+        this.cañon=cañon;
         this.dis=dis;
         this.x=x;
         this.y=y;
@@ -44,8 +44,8 @@ public class posicion extends Thread{
     public void datos(){
         
         
-        System.out.println("X :"+cubo.getX());
-        System.out.println("Y :"+cubo.getY());
+        System.out.println("X :"+cañon.getX());
+        System.out.println("Y :"+cañon.getY());
         
        
         
@@ -61,31 +61,23 @@ public class posicion extends Thread{
         int p=0;
        
             try {
-                for(i=0;i<500;i++){
+                for(i=0;i<600;i++){
                     
                 
-                bala.setLocation(x,i);
-                sleep(5);
-                
-                        System.out.println("Coordenada dispa en x :"+dis.getX());
-                        System.out.println("Coordenada dispa en y :"+dis.getY());
-                        System.out.println("Coordenada bala en x :"+bala.getX());
-                        System.out.println("Coordenada bala en y :"+bala.getY());
-                if((bala.getY() == dis.getY())&&(bala.getX()==dis.getX())){
-                    i=0;
+                cañon.setLocation(i,cañon.getY());
+                sleep(5);               
+               
                 }
-                    if((bala.getY())==490){
-                        System.out.println("Coordenada dispa en x :"+dis.getX());
-                        System.out.println("Coordenada dispa en y :"+dis.getY());
-                        System.out.println("Coordenada bala en x :"+bala.getX());
-                        System.out.println("Coordenada bala en y :"+bala.getY());
-                        
-                        
-                    }
+                
+                for(i=cañon.getX();i>0;i--){
                     
                 
-                
+                cañon.setLocation(i,cañon.getY()+2);
+                sleep(5);               
+               
                 }
+                
+                
                 
             } catch (InterruptedException ex) {
                 Logger.getLogger(posicion.class.getName()).log(Level.SEVERE, null, ex);
