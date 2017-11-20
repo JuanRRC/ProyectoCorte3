@@ -43,5 +43,12 @@ public class RectanguloGrafico extends Rectangulo implements Dibujable {
          dw.setColor(color);
         dw.fillRect((int)this.getX(),(int)this.getY(),(int)this.Getlado(1),(int)this.Getlado(2));
     }
+        /**
+     * movimiento de las balas hacia abajo
+     */
+    public void Ciclo(){
+        float x = this.getY();
+        this.setY(x += 20);
+    }
     
 }

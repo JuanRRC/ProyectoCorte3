@@ -6,6 +6,7 @@
 package Grafico;
 import Logica2.Coordenada;
 import Logica2.Dibujable;
+import static Principal.main.Aleatorio;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -129,9 +130,26 @@ public void update(Graphics g){
                     nave.Ciclo();
                     
                 }
-              
-              
-              
+              int i;
+              for(i=0;i<ast.size();i++){
+                  RectanguloGrafico rect =  (RectanguloGrafico) ast.get(i);
+                  rect.Ciclo();
+                  if(rect.getY()>525){
+                      int rango = Aleatorio(800,50);
+                      rect.setY(0);
+                      rect.setX(rango);
+                  }
+              }
+              if(contadorAsteriodes <5){
+                  int rango = Aleatorio(800,50);
+                  Coordenada Inicio = new Coordenada(rango, 0);
+                  RectanguloGrafico nuevo = new RectanguloGrafico(Inicio,25,25,Color.BLUE);
+                  ast.add(nuevo);
+                  v.add(nuevo);
+                  nuevo.Ciclo();
+                 contadorAsteriodes++; 
+              }
+              // Colision1();
                 Thread.sleep(50);// se duerme cada 50 ml segundos
             }catch(InterruptedException err){System.out.println(err);}
             repaint();
