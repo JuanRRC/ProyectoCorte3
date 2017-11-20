@@ -70,4 +70,13 @@ public class Nave extends Coordenada{
             this.cor2.setY(nueva.getY());
         }
     }
+     /**
+     * se setea en el lado que se quiera
+     * @param NvaCor 
+     */
+    public void mover(Coordenada NvaCor){
+        setVertice((this.Suma(NvaCor)),1);
+        setVertice((this.cor1.Suma(NvaCor)), 2);
+        setVertice((this.cor2.Suma(NvaCor)), 3);
+    }
 }

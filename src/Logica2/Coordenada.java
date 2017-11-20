@@ -58,4 +58,16 @@ public class Coordenada {
     public void setY(float y) {
         this.y = y;
     }
+     /**
+     * se suma coordenada especifica y se le retorna al metodo mever
+     * @param S
+     * @return 
+     */
+    public Coordenada Suma(Coordenada S){
+      float Sumx = this.x+S.getX();
+      float Sumy = this.y+S.getY();
+        Coordenada Cor = new Coordenada(Sumx,Sumy);
+        return Cor;
+    
+    }
 }

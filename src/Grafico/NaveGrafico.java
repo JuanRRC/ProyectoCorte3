@@ -46,5 +46,18 @@ public class NaveGrafico extends Nave implements Dibujable  {
         Polygon p = new Polygon(x,y,3);
           dw.fillPolygon(p);
     }
+    /**
+     * se mueve la coordenada y se pinta 
+     * @param dw
+     * @param uncolor 
+     */
+    public void Pintar(Graphics dw,Color uncolor) {
+        dw.setColor(uncolor);
+        int x[] ={(int)this.getX(),(int)cor1.getX(),(int)cor2.getX()};
+        int y[] ={(int)this.getY(),(int)cor1.getY(),(int)cor2.getY()};
+        
+        Polygon p = new Polygon(x,y,3);
+          dw.fillPolygon(p);
+    }
     
 }
