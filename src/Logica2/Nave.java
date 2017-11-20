@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Nave extends Coordenada{
     public Coordenada cor1 = new Coordenada();//tma el lugar de la coordena izquierda
     public Coordenada cor2 = new Coordenada();//tma el lugar de la coordena derecha
-  
+    public  ArrayList balas = new ArrayList();//
     /**
      * la coordenada que se hereda va a tomar el lugar de la nave
      */

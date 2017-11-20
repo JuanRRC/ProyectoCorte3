@@ -86,9 +86,9 @@ public void update(Graphics g){
         }
           if(tecla == KeyEvent.VK_Q ){//Dispara
            
-         // CirculoGrafico bala = nave.Bala1();
-         // nave.balas.add(bala);
-         // v.add(bala);
+         CirculoGrafico bala = nave.Bala1();
+          nave.balas.add(bala);
+          v.add(bala);
             
         }
     }
@@ -114,7 +114,18 @@ public void update(Graphics g){
      public void run(){
         while(true){
             
-          repaint();
+          try{
+                if(!nave.balas.isEmpty()){
+                    nave.Ciclo();
+                    
+                }
+              
+              
+              
+                Thread.sleep(50);// se duerme cada 50 ml segundos
+            }catch(InterruptedException err){System.out.println(err);}
+            repaint();
+            
             
         }
     }

@@ -59,5 +59,23 @@ public class NaveGrafico extends Nave implements Dibujable  {
         Polygon p = new Polygon(x,y,3);
           dw.fillPolygon(p);
     }
-    
+     /**
+     * metodo que generara el disparo
+     * @return 
+     */
+    public CirculoGrafico Bala1(){
+        Coordenada salida = new Coordenada(this.getX(),this.getY());
+        CirculoGrafico bala = new  CirculoGrafico(salida,10,Color.RED);
+        return bala;
+    }
+     /**
+     * metodo modifica lo creado
+     */
+    public void Ciclo(){
+        for(int i=0; i<this.balas.size();i++){
+            CirculoGrafico y = (CirculoGrafico) this.balas.get(i);
+            float x = y.getY();
+            y.setY(x-=5);//velocidad y vala hacia arriva
+        }
+    }
 }
