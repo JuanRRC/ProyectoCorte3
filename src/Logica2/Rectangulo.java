@@ -42,4 +42,21 @@ public class Rectangulo extends Coordenada {
         this.lado1 = nuevo.lado1;
         this.lado2 = nuevo.lado2;
     }
+     /**
+      * retorna los lados que contiene el rectangulo
+      * @param lado
+      * @return 
+      */
+         public float Getlado(int lado){
+        if(lado == 1){
+            return this.lado1;
+        }
+        if(lado == 2){
+            return this.lado2;
+        }
+        if(lado != 1 && lado != 2){
+            return 0;
+        }
+        return 0;
+    }
 }
