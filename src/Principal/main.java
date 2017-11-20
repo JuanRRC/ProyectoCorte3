@@ -8,6 +8,7 @@ package Principal;
 import Grafico.NaveGrafico;
 import Grafico.Panel;
 import Grafico.RectanguloGrafico;
+import Grafico.TextoGrafico;
 import Grafico.Ventana;
 import Logica2.Coordenada;
 import java.awt.Color;
@@ -32,6 +33,10 @@ public class main {
         Coordenada cor4 = new Coordenada(425,575);//izquierda
         Coordenada cor5 = new Coordenada(525,575);//derecha
         
+        
+        
+        
+        
         NaveGrafico nave = new NaveGrafico(cor3,cor4,cor5,Color.YELLOW);
         
         //RectanguloGrafico rectangulo = new RectanguloGrafico(cor1,80,80,Color.RED);
@@ -40,7 +45,33 @@ public class main {
        // ArregloDeobjetos.add(rectangulo);
          //ArregloDeobjetos.add(circulo);
        
+         TextoGrafico Vidas = new TextoGrafico("Vidas",Color.RED,150,50);
+       Vidas.setSize(35);
+       ArregloDeobjetos.add(Vidas);
        
+       TextoGrafico Score = new TextoGrafico("Puntos",Color.RED,150,250);
+       Score.setSize(35);
+       ArregloDeobjetos.add(Score);
+       
+       
+       TextoGrafico  Puntaje = new TextoGrafico("0",Color.RED,150,305);
+         Puntaje.setSize(40);
+          ArregloDeobjetos.add(Puntaje);
+          
+        TextoGrafico  Nrvidas = new TextoGrafico("3",Color.RED,150,150);
+         Nrvidas.setSize(40);
+          ArregloDeobjetos.add(Nrvidas);  
+         
+         
+         
+         
+         
+         
+         
+       
+         
+         
+         
        Coordenada Salida = new Coordenada(0,0);//se crean balas hacia abajp  rango  eje x
        RectanguloGrafico Asteriode = new RectanguloGrafico(Salida,25,25,Color.BLUE);
           ArregloDeobjetos.add(nave);
