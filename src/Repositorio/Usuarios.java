@@ -5,7 +5,6 @@
  */
 package Repositorio;
 
-import Logica.Recreacionista;
 
 /**
  *

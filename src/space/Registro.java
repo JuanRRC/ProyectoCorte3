@@ -19,7 +19,7 @@ import java.util.Map;
  */
 public class Registro extends javax.swing.JPanel {
 
-    
+    int i=0;
     Usuarios cliente;
     Jugadores jugador;
     login logeo;
