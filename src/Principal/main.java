@@ -5,6 +5,7 @@
  */
 package Principal;
 
+import Grafico.NaveGrafico;
 import Grafico.Panel;
 import Grafico.Ventana;
 import Logica2.Coordenada;
@@ -33,7 +34,14 @@ public class main {
           Coordenada cor1 = new Coordenada(250,250);
           // coordenada circulo
            Coordenada cor2 = new Coordenada(350,350);
-          
+          //nave
+        Coordenada cor3 = new Coordenada(475,500);//punta
+        Coordenada cor4 = new Coordenada(425,575);//izquierda
+        Coordenada cor5 = new Coordenada(525,575);//derecha
+        
+        NaveGrafico nave = new NaveGrafico(cor3,cor4,cor5,Color.YELLOW);
+        
+        ArregloDeobjetos.add(nave);
           
             Panel nuestroPanel = new Panel(ArregloDeobjetos);
                 nuestraventana.add(nuestroPanel);
