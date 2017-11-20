@@ -33,6 +33,9 @@ public class Panel extends JPanel implements KeyListener{
     
    int contadorAsteriodes =5;
    
+    TextoGrafico Puntos;
+     TextoGrafico Vidas;
+      TextoGrafico final1;
     
 /**
  * constructor de la clase panel
@@ -121,6 +124,15 @@ public void update(Graphics g){
         ast.add(c);
         ast.add(d);
        ast.add(e);
+    }
+    public void RefPuntos(TextoGrafico a){
+        this.Puntos = a;
+    }
+    public void RefVida(TextoGrafico b){
+        this.Vidas = b;
+    }
+    public void RefFinal(TextoGrafico c){
+        this.final1 = c;
     }
     /**
      * este metodo controla el choque de las balas que suben y bajan

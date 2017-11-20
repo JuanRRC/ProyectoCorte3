@@ -62,6 +62,10 @@ public class main {
          Nrvidas.setSize(40);
           ArregloDeobjetos.add(Nrvidas);  
          
+          
+           TextoGrafico  final1 = new TextoGrafico("Fin juego",Color.RED,900,500);
+         final1.setSize(100);
+         // ArregloDeobjetos.add(final1);  
          
          
          
