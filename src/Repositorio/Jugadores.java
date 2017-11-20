@@ -19,7 +19,7 @@ public class Jugadores {
         this.contraseña = contraseña;
     }
 
-    public static Jugadores crear(String nombreU, int contraseña) {
+    public static Jugadores crear(int contraseña,String nombreU) {
         return new Jugadores(nombreU,contraseña);
         
     }

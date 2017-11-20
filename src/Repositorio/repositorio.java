@@ -10,6 +10,7 @@ import Repositorio.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -71,7 +72,28 @@ public class repositorio {
      * @return
      */
     
-        
+       public static ArrayList<Jugadores> obtenerTodos() {
+        ArrayList<Jugadores> juga = new ArrayList<Jugadores>();
+
+        try {
+            String query = "SELECT * FROM jugadores;";
+            PreparedStatement sentenciaP = database.open().prepareStatement(query);
+            ResultSet resultado = sentenciaP.executeQuery();
+
+            while (resultado.next()) {
+                juga.add(Jugadores.crear(resultado.getInt("contraseña"),resultado.getString("nick")));
+            }
+
+            sentenciaP.close();
+            database.close();
+
+            return juga;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return juga;
+    } 
     
 
     

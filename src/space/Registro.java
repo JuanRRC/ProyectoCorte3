@@ -22,7 +22,8 @@ public class Registro extends javax.swing.JPanel {
     
     Usuarios cliente;
     Jugadores jugador;
-    ArrayList<Jugadores> lista = new ArrayList<Jugadores>();
+    login logeo;
+    ArrayList<String> lista = new ArrayList<String>();
     Map<Integer, String> usuarios = new HashMap<Integer, String>();
     
     
@@ -219,9 +220,11 @@ public class Registro extends javax.swing.JPanel {
                     //String nombre, String apellido, int edad, String cedula, String fecha,String fechaR,String foto
                     cliente = Usuarios.crear(nom, ape, ed, ced, fecha2, fecha1, nom);
                     repositorio.crear(cliente);
-                    jugador= Jugadores.crear(usu, cont);
+                    
                     repositorio.crearJ(jugador);
-                    usuarios.put(cont,usu);
+                    String datos=usu+con;
+                    lista.add(datos);
+                    
                     JOptionPane.showMessageDialog(this, "Persona creada satisfactoriamente", "Bien", JOptionPane.INFORMATION_MESSAGE);
                     
         

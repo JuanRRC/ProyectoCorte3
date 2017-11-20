@@ -5,9 +5,15 @@
  */
 package space;
 
+import Repositorio.Jugadores;
+import Repositorio.repositorio;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import javax.swing.JOptionPane;
+import juego.*;
+import space.*;
 
 /**
  *
@@ -15,8 +21,8 @@ import java.util.Map;
  */
 public class login extends javax.swing.JPanel {
 
-    Map<Integer, String> usuariosR = new HashMap<Integer, String>();
-    int i =0;
+    ArrayList<String> lista2 = new ArrayList<String>();
+    
     /**
      * Creates new form login
      */
@@ -24,10 +30,30 @@ public class login extends javax.swing.JPanel {
     public login() {
         initComponents();
     }
-
-    public void mapa(int contra,String usu){
-       usuariosR.put(contra, usu);
+    
+    public void datos(String nom,int con){
+        ArrayList<Jugadores> lista1 = repositorio.obtenerTodos();
+        Iterator<Jugadores> it = lista1.iterator();
+        System.out.println(nom+""+con);
+        Jugadores num;
+        int i=0;
+        while (i<lista1.size()){
+            num = it.next();
+            if((con==num.getContraseña())){
+                
+                System.out.println(num.getNombreU()+"----- "+ num.getContraseña());
+                JOptionPane.showMessageDialog(null,"paso");
+                Play h = new Play();
+                i=lista1.size();
+                
+                
+            }
+            i++;
+        }
+        JOptionPane.showMessageDialog(null,"jodido");
+        
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -93,7 +119,12 @@ public class login extends javax.swing.JPanel {
 
     private void iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarActionPerformed
         // TODO add your handling code here:
-        
+        System.out.println("entre");
+        System.out.println("ITERATOR");
+        String nom=usuario.getText();
+        String con=contraseña.getText();
+        int contra= Integer.parseInt(con);
+        datos(nom,contra);
         
     }//GEN-LAST:event_iniciarActionPerformed
 
