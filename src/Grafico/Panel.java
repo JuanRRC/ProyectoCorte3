@@ -21,10 +21,13 @@ import javax.swing.JPanel;
  */
 public class Panel extends JPanel implements KeyListener{
         ArrayList v;
+        ArrayList ast = new ArrayList();
         NaveGrafico nave ;
         Coordenada movimientoIzq = new Coordenada(-25,0);//ejes X y ejes Y
     Coordenada movimientoDer = new Coordenada(25,0);
     Coordenada movimientoNulo = new Coordenada(0,0);// al soltar la tecla 
+    
+       int contadorAsteriodes =5;
     
      /**
      * CONTIENE EL POLIGONO v
@@ -110,6 +113,13 @@ public void update(Graphics g){
     }
      public void refNave(NaveGrafico n){
         this.nave=n;
+    }
+       public void refAst(RectanguloGrafico a,RectanguloGrafico b,RectanguloGrafico c,RectanguloGrafico d,RectanguloGrafico e ){
+       ast.add(a);
+       ast.add(b);
+        ast.add(c);
+        ast.add(d);
+       ast.add(e);
     }
      public void run(){
         while(true){
