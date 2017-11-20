@@ -31,6 +31,8 @@ public class main {
          
           //coordenadas derectangulo ensayo
           Coordenada cor1 = new Coordenada(250,250);
+          // coordenada circulo
+           Coordenada cor2 = new Coordenada(350,350);
           
           
             Panel nuestroPanel = new Panel(ArregloDeobjetos);
