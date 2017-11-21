@@ -273,7 +273,7 @@ public void update(Graphics g){
                   rect.Pintar(Color.YELLOW);
               }
               }
-              if (vidas <= 0){
+              if (vidas == 0){
                   FinDeJuego = false;
                   v.add(final1);
               }

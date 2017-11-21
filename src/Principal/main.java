@@ -64,7 +64,7 @@ public class main {
          
           
            TextoGrafico  final1 = new TextoGrafico("Fin juego",Color.RED,900,500);
-         final1.setSize(100);
+           final1.setSize(100);
          // ArregloDeobjetos.add(final1);  
          
          
