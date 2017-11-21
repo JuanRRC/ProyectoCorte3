@@ -40,9 +40,9 @@ public class RectanguloGrafico extends Rectangulo implements Dibujable{
     /**
      * movimiento de las balas hacia abajo
      */
-    public void Ciclo(){
+    public void Ciclo(int mov){
         float x = this.getY();
-        this.setY(x += 20);
+        this.setY(x += mov);
     }
     public void Pintar(Color a){
         this.color=a;

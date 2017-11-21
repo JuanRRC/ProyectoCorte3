@@ -30,10 +30,12 @@ public class Panel extends JPanel implements KeyListener{
     Coordenada movimientoIzq = new Coordenada(-25,0);//ejes X y ejes Y
     Coordenada movimientoDer = new Coordenada(25,0);
     Coordenada movimientoNulo = new Coordenada(0,0);// al soltar la tecla 
-    
+    Boolean FinDeJuego = true;
    int contadorAsteriodes =5;
    int score;
    int vidas =3;
+   int Mov = 10;
+   int MAXAST = 5;
    
     TextoGrafico Puntos;
      TextoGrafico Vidas;
@@ -203,7 +205,7 @@ public void update(Graphics g){
      * metodo con el hilo de ejecucion
      */
     public void run(){
-        while(true){
+        while(FinDeJuego){
             
             try{
                 if(!nave.balas.isEmpty()){
@@ -213,22 +215,69 @@ public void update(Graphics g){
               int i;
               for(i=0;i<ast.size();i++){
                   RectanguloGrafico rect =  (RectanguloGrafico) ast.get(i);
-                  rect.Ciclo();
+                  rect.Ciclo(Mov);
                   if(rect.getY()>525){
                       int rango = Aleatorio(800,50);
                       rect.setY(0);
                       rect.setX(rango);
                   }
               }
-              if(contadorAsteriodes <5){
+              if(contadorAsteriodes < MAXAST){
                   int rango = Aleatorio(800,50);
                   Coordenada Inicio = new Coordenada(rango, 0);
                   RectanguloGrafico nuevo = new RectanguloGrafico(Inicio,25,25,Color.BLUE);
                   ast.add(nuevo);
                   v.add(nuevo);
-                  nuevo.Ciclo();
+                  nuevo.Ciclo(Mov);
                  contadorAsteriodes++; 
               }
+              int Nivel = 1;
+              String Niveles = ""+Nivel;
+              TextoGrafico TextoNivel = new TextoGrafico ("NIVEL",Color.BLACK, 150,500);
+              TextoNivel.setSize(50);
+              TextoGrafico TextoNrNivel = new TextoGrafico (Niveles,Color.RED, 150,600);
+              TextoNrNivel.setSize(50);
+              v.add(TextoNrNivel);
+              v.add(TextoNivel);
+              if (score>= 50 && score < 100){
+                  Nivel = 2;
+                  String NuevoNivel = ""+Nivel;
+                  TextoNrNivel.SetColor(Color.DARK_GRAY);
+                  TextoGrafico Nrnivel = new  TextoGrafico(NuevoNivel,Color.RED,150,600);
+                  Nrnivel.setSize(40);
+                  TextoNrNivel = Nrnivel;
+                  v.add(TextoNrNivel);
+                  Mov = 12;
+                  MAXAST = 6;
+                  // for aumenta asteroide al llegar al nivel 1 y los pinta 
+                   
+              for(i=0;i<ast.size();i++){
+                  RectanguloGrafico rect =  (RectanguloGrafico) ast.get(i);
+                  rect.Pintar(Color.green);
+              }
+              }
+              if (score>= 100 && score < 150){
+                  Nivel = 3;
+                  String NuevoNivel = ""+Nivel;
+                  TextoNrNivel.SetColor(Color.DARK_GRAY);
+                  TextoGrafico Nrnivel = new  TextoGrafico(NuevoNivel,Color.RED,150,600);
+                  Nrnivel.setSize(40);
+                  TextoNrNivel = Nrnivel;
+                  v.add(TextoNrNivel);
+                  Mov = 14;
+                  MAXAST = 7;
+                  // for aumenta asteroide al llegar al nivel 1 y los pinta 
+                   
+              for(i=0;i<ast.size();i++){
+                  RectanguloGrafico rect =  (RectanguloGrafico) ast.get(i);
+                  rect.Pintar(Color.YELLOW);
+              }
+              }
+              if (vidas <= 0){
+                  FinDeJuego = false;
+                  v.add(final1);
+              }
+              
                Colision1();
                 Thread.sleep(50);// se duerme cada 50 ml segundos
             }catch(InterruptedException err){System.out.println(err);}
