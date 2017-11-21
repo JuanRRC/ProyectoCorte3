@@ -32,6 +32,8 @@ public class Panel extends JPanel implements KeyListener{
     Coordenada movimientoNulo = new Coordenada(0,0);// al soltar la tecla 
     
    int contadorAsteriodes =5;
+   int score;
+   int vidas =3;
    
     TextoGrafico Puntos;
      TextoGrafico Vidas;
@@ -156,7 +158,8 @@ public void update(Graphics g){
             Coordenada Izquierda = new Coordenada (aste.getX()-15,aste.getY());
             Coordenada medio = new Coordenada(aste.getX(),aste.getY());
             
-            if(Corbala.getX()>Izquierda.getX()&&Corbala.getX()<Derecha.getX()&&Corbala.getY()<medio.getY()){
+            if(Corbala.getX()>Izquierda.getX()&&Corbala.getX()<Derecha.getX()&&Corbala.getY()<medio.getY()
+                    && Corbala.getY()+25>medio.getY()){
                 aste.Pintar(Color.WHITE);
                bala.Pintar(Color.WHITE);
                 bala.setY(-100);
@@ -164,6 +167,33 @@ public void update(Graphics g){
                 nave.balas.remove(bala);
                 ast.remove(aste);
                 contadorAsteriodes --;
+                score +=5;
+                Puntos.SetColor(Color.DARK_GRAY);
+                String NuevoScore = ""+score;
+                 TextoGrafico NrPuntos = new TextoGrafico(NuevoScore ,Color.RED,150,305);
+                NrPuntos.setSize(40);
+                Puntos = NrPuntos;
+                v.add(Puntos);
+            }
+            if ((medio.getY()> 475 && medio.getY()< 550)&&(nave.cor1.getX()< medio.getX())&&(nave.cor2.getX()>medio.getX())){
+                score = score -5;
+                vidas --;
+                String NuevoScore=""+score;
+                String NuevoaVida=""+vidas;
+                Vidas.SetColor(Color.DARK_GRAY);
+                Puntos.SetColor(Color.DARK_GRAY);
+                TextoGrafico NrVidas = new TextoGrafico(NuevoaVida ,Color.RED,150,150);
+                NrVidas.setSize(40);
+                Vidas = NrVidas;
+                 TextoGrafico NrPuntos = new TextoGrafico(NuevoScore ,Color.RED,150,305);
+                NrPuntos.setSize(40);
+                Puntos = NrPuntos;
+                v.add(Vidas);
+                v.add(Puntos);
+                
+                ast.remove(aste);
+                aste.setY(2000);
+               contadorAsteriodes--; 
             }
             
         }

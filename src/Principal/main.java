@@ -109,6 +109,9 @@ public class main {
        nuestroPanel.refNave(nave);
        
        nuestroPanel.refAst(Asteriode, Asteriode1, Asteriode2, Asteriode3, Asteriode4);
+       nuestroPanel.RefPuntos(final1);
+       nuestroPanel.RefVida(Nrvidas);
+       nuestroPanel.RefPuntos(Puntaje);
         nuestraventana.add(nuestroPanel);
         nuestraventana.setSize(700,600);
         nuestraventana.setBackground(Color.darkGray);
