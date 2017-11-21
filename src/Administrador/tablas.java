@@ -5,10 +5,10 @@
  */
 package Administrador;
 
+import Repositorio.Usuarios;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import Repositorio.Usuarios;
-import Repositorio.repositorio;
+
 /**
  *
  * @author Clint
@@ -16,16 +16,35 @@ import Repositorio.repositorio;
 public class tablas extends javax.swing.JFrame {
 
     
+    Usuarios usuario;
+    
     private DefaultTableModel table_model_personas;
     /**
      * Creates new form tablas
      */
     public tablas() {
         initComponents();
-        
     }
 
-   
+    public void setTableModel(DefaultTableModel table_model_personas){
+        this.table_model_personas = table_model_personas;
+    }
+    
+    public void refreshTableModel()
+    {
+        ArrayList<Persona> lista_personas = Repositorio.obtenerTodos();
+        while (table_model_personas.getRowCount() > 0) {
+            table_model_personas.removeRow(0);
+        }
+        
+        for(Persona p : lista_personas)
+        {
+            String[] data = {Integer.toString(p.getId()), p.getDocumento(), p.getNombre(),p.getApellido(), p.getTelefono(), p.getEmail()};
+            table_model_personas.addRow(data);
+        }
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,25 +54,123 @@ public class tablas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tablas_Datos1 = new Administrador.Tablas_Datos();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla_infantil = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabla_juvenil = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabla_mayores = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel2.setText("Infantil: 5-15 años");
+
+        jLabel3.setText("Juvenil 16-24 años");
+
+        jLabel4.setText("Mayores :25-50 años");
+
+        tabla_infantil.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nombre", "Apellido", "Edad"
+            }
+        ));
+        jScrollPane1.setViewportView(tabla_infantil);
+
+        tabla_juvenil.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nombre", "Apellido", "Edad", "Cedula"
+            }
+        ));
+        jScrollPane2.setViewportView(tabla_juvenil);
+
+        tabla_mayores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nombre", "Apellido", "Edad", "Cedula"
+            }
+        ));
+        jScrollPane3.setViewportView(tabla_mayores);
+
+        jLabel1.setText("Categorias ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tablas_Datos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 491, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2)
+                        .addComponent(jScrollPane3)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel4))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tablas_Datos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 452, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel1)
+                    .addGap(18, 18, 18)
+                    .addComponent(jLabel2)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jLabel3)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jLabel4)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(30, Short.MAX_VALUE)))
         );
 
         pack();
@@ -94,10 +211,31 @@ public class tablas extends javax.swing.JFrame {
         });
     }
 
-    
+    private void configComponents() {
+        DefaultTableModel table_model_personas = new DefaultTableModel();
+        table_model_personas.addColumn("Id");
+        table_model_personas.addColumn("Documento");
+        table_model_personas.addColumn("Nombre");
+        table_model_personas.addColumn("apellido");
+        table_model_personas.addColumn("Teléfono");
+        table_model_personas.addColumn("Email");
+        
+        tabla_personas.setModel(table_model_personas);
+        panel_personas.setTableModel(table_model_personas);
+        panel_personas.refreshTableModel();
+    }
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Administrador.Tablas_Datos tablas_Datos1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable tabla_infantil;
+    private javax.swing.JTable tabla_juvenil;
+    private javax.swing.JTable tabla_mayores;
     // End of variables declaration//GEN-END:variables
 }

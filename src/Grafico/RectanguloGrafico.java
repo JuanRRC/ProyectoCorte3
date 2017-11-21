@@ -15,11 +15,11 @@ import java.awt.Graphics;
  *
  * @author JUAN DAVID
  */
-public class RectanguloGrafico extends Rectangulo implements Dibujable {
+public class RectanguloGrafico extends Rectangulo implements Dibujable{
 
-     Color color;
+    Color color;
     /**
-     * constructor con color que contendra el rectangulo
+     * 
      * @param cor
      * @param x
      * @param y
@@ -32,25 +32,19 @@ public class RectanguloGrafico extends Rectangulo implements Dibujable {
     
     
     
-    
-    /**
-     * dibujara el  objeto
-     * @param dw 
-     */
-    
     @Override
     public void dibujar(Graphics dw) {
-         dw.setColor(color);
+        dw.setColor(color);
         dw.fillRect((int)this.getX(),(int)this.getY(),(int)this.Getlado(1),(int)this.Getlado(2));
     }
-        /**
+    /**
      * movimiento de las balas hacia abajo
      */
-    public void Ciclo(){
+    public void Ciclo(int mov){
         float x = this.getY();
-        this.setY(x += 20);
+        this.setY(x += mov);
     }
-     public void Pintar(Color a){
+    public void Pintar(Color a){
         this.color=a;
     }
 }

@@ -12,16 +12,13 @@ package Logica2;
 public class Coordenada {
     private float x;
     private float y;
-    /**
-     * metodo para coordenada sin atrivutos
-     */
     public Coordenada(){
         this.x =0;
         this.y =0;
         
-    } 
-     /**
-     * controla las coordenas "movimientos" que el usuario dessee
+    }
+    /**
+     * controla las coordenas "movimientos"
      * @param x
      * @param y 
      */
@@ -30,20 +27,13 @@ public class Coordenada {
         this.y =y;
         
     }
-    /**
-     * manejara coordenas nuevas 
-     * @param nueva 
-     */
-       public Coordenada(Coordenada nueva){
+    public Coordenada(Coordenada nueva){
         this.x =nueva.x;
         this.y =nueva.y;
         
     }
-       /**
-        * 
-        * metodos que daran y retornaran las coordenanas
-        */
-       public float getX() {
+
+    public float getX() {
         return this.x;
     }
 
@@ -58,7 +48,8 @@ public class Coordenada {
     public void setY(float y) {
         this.y = y;
     }
-     /**
+    
+    /**
      * se suma coordenada especifica y se le retorna al metodo mever
      * @param S
      * @return 
@@ -70,4 +61,5 @@ public class Coordenada {
         return Cor;
     
     }
+    
 }

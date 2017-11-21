@@ -11,13 +11,14 @@ import java.util.ArrayList;
  *
  * @author JUAN DAVID
  */
-public class Nave extends Coordenada{
+public class Nave extends Coordenada {
     public Coordenada cor1 = new Coordenada();//tma el lugar de la coordena izquierda
-    public Coordenada cor2 = new Coordenada();//tma el lugar de la coordena derecha
-    public  ArrayList balas = new ArrayList();//
+     public Coordenada cor2 = new Coordenada();//tma el lugar de la coordena derecha
+    public  ArrayList balas = new ArrayList();
     /**
      * la coordenada que se hereda va a tomar el lugar de la nave
      */
+    
     public Nave(){
         super();
         this.cor1.setX(0);
@@ -27,13 +28,8 @@ public class Nave extends Coordenada{
         this.cor2.setY(0);
         
     }
-    /**
-     * recibe tres coordenads y genera la nave
-     * @param a
-     * @param b
-     * @param c 
-     */
-        public Nave(Coordenada a, Coordenada b, Coordenada c){
+    
+    public Nave(Coordenada a, Coordenada b, Coordenada c){
         super(a.getX(),a.getY());
         this.cor1.setX(b.getX());
         this.cor1.setY(b.getY());
@@ -41,11 +37,8 @@ public class Nave extends Coordenada{
         this.cor2.setX(c.getX());
         this.cor2.setY(c.getY());
     }
-        /**
-         * recibe la nave  por parametro getX y getY y se setea setX y setY
-         * @param c 
-         */
-         public Nave(Nave c){
+    
+    public Nave(Nave c){
        super(c.getX(),c.getY()); 
         this.cor1.setX(c.getX());
         this.cor1.setY(c.getY());
@@ -53,7 +46,8 @@ public class Nave extends Coordenada{
         this.cor2.setX(c.getX());
         this.cor2.setY(c.getY());
     }
-         /**
+    
+    /**
      * borra y repinta en coordenadas modificadas
      */
     public void setVertice(Coordenada nueva, int lado){
@@ -70,7 +64,7 @@ public class Nave extends Coordenada{
             this.cor2.setY(nueva.getY());
         }
     }
-     /**
+    /**
      * se setea en el lado que se quiera
      * @param NvaCor 
      */

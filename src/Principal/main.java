@@ -8,6 +8,7 @@ package Principal;
 import Grafico.NaveGrafico;
 import Grafico.Panel;
 import Grafico.RectanguloGrafico;
+import Grafico.TextoGrafico;
 import Grafico.Ventana;
 import Logica2.Coordenada;
 import java.awt.Color;
@@ -18,34 +19,63 @@ import java.util.ArrayList;
  * @author JUAN DAVID
  */
 public class main {
-        public static int Aleatorio(int Max,int Min){
+    public static int Aleatorio(int Max,int Min){
         return(int)(Math.random() * (Max-Min));
     }
     public static void main(String[] args){
-    
-        /**
-            * arreglo se mete al panel y se muestra en la ventana
-            */
+        Ventana nuestraventana = new Ventana("juego");
+        ArrayList ArregloDeobjetos = new ArrayList();
+        Coordenada cor1 = new Coordenada(250,250);
+        Coordenada cor2 = new Coordenada(350,350);
         
-           Ventana nuestraventana = new Ventana("juego");
-           
-            /**
-           * se crea lista y dimenciones que tendra el juego
-           */
-           ArrayList ArregloDeobjetos = new ArrayList();
-           
-         
-          //coordenadas derectangulo ensayo
-          Coordenada cor1 = new Coordenada(250,250);
-          // coordenada circulo
-           Coordenada cor2 = new Coordenada(350,350);
-          //nave
+        //nave
         Coordenada cor3 = new Coordenada(475,500);//punta
         Coordenada cor4 = new Coordenada(425,575);//izquierda
         Coordenada cor5 = new Coordenada(525,575);//derecha
         
+        
+        
+        
+        
         NaveGrafico nave = new NaveGrafico(cor3,cor4,cor5,Color.YELLOW);
         
+        //RectanguloGrafico rectangulo = new RectanguloGrafico(cor1,80,80,Color.RED);
+        //CirculoGrafico circulo = new CirculoGrafico(cor2,50,Color.CYAN);
+        
+       // ArregloDeobjetos.add(rectangulo);
+         //ArregloDeobjetos.add(circulo);
+       
+         TextoGrafico Vidas = new TextoGrafico("Vidas",Color.RED,150,50);
+       Vidas.setSize(35);
+       ArregloDeobjetos.add(Vidas);
+       
+       TextoGrafico Score = new TextoGrafico("Puntos",Color.RED,150,250);
+       Score.setSize(35);
+       ArregloDeobjetos.add(Score);
+       
+       
+       TextoGrafico  Puntaje = new TextoGrafico("0",Color.RED,150,305);
+         Puntaje.setSize(40);
+          ArregloDeobjetos.add(Puntaje);
+          
+        TextoGrafico  Nrvidas = new TextoGrafico("3",Color.RED,150,150);
+         Nrvidas.setSize(40);
+          ArregloDeobjetos.add(Nrvidas);  
+         
+          
+           TextoGrafico  final1 = new TextoGrafico("Fin juego",Color.RED,900,500);
+           final1.setSize(100);
+         // ArregloDeobjetos.add(final1);  
+         
+         
+         
+         
+         
+         
+       
+         
+         
+         
        Coordenada Salida = new Coordenada(0,0);//se crean balas hacia abajp  rango  eje x
        RectanguloGrafico Asteriode = new RectanguloGrafico(Salida,25,25,Color.BLUE);
           ArregloDeobjetos.add(nave);
@@ -67,25 +97,27 @@ public class main {
        
        Coordenada Salida4 = new Coordenada(0,0);//se crean balas hacia abajp  rango  eje x
        RectanguloGrafico Asteriode4 = new RectanguloGrafico(Salida4,25,25,Color.BLUE);
-       
-        ArregloDeobjetos.add(Asteriode);
+       ArregloDeobjetos.add(Asteriode);
        ArregloDeobjetos.add(Asteriode1);
        ArregloDeobjetos.add(Asteriode2);
        ArregloDeobjetos.add(Asteriode3);
        ArregloDeobjetos.add(Asteriode4);
+          ArregloDeobjetos.add(nave);
         
-        ArregloDeobjetos.add(nave);
-        
-           
-            Panel nuestroPanel = new Panel(ArregloDeobjetos);
-            nuestroPanel.refAst(Asteriode, Asteriode1, Asteriode2, Asteriode3, Asteriode4);
-            nuestroPanel.refNave(nave);
-                nuestraventana.add(nuestroPanel);
-                nuestraventana.setSize(800,600);
-                nuestraventana.setBackground(Color.darkGray);
-                nuestraventana.setVisible(true);
-                nuestroPanel.run
-        ();
+       Panel nuestroPanel = new Panel(ArregloDeobjetos);
       
+       nuestroPanel.refNave(nave);
+       
+       nuestroPanel.refAst(Asteriode, Asteriode1, Asteriode2, Asteriode3, Asteriode4);
+       nuestroPanel.RefFinal(final1);
+       nuestroPanel.RefVida(Nrvidas);
+       nuestroPanel.RefPuntos(Puntaje);
+        nuestraventana.add(nuestroPanel);
+        nuestraventana.setSize(700,600);
+        nuestraventana.setBackground(Color.darkGray);
+        nuestraventana.setVisible(true);
+        nuestroPanel.run ();
+        
+        
     }
 }
