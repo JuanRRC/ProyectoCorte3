@@ -99,13 +99,37 @@ public class repositorio {
         ArrayList<Usuarios> juga = new ArrayList<Usuarios>();
 
         try {
-            String query = "SELECT * FROM registros;";
+            String query = "SELECT * FROM registros WHERE edad between 5 and 15;";
             PreparedStatement sentenciaP = database.open().prepareStatement(query);
             ResultSet resultado = sentenciaP.executeQuery();
 
             while (resultado.next()) {
   //String nombre, String apellido, int edad, String cedula,String fecha,String fechaR,String foto
-                juga.add(Usuarios.crear(resultado.getString("nombre"),resultado.getString("apellido"),resultado.getInt("edad"),resultado.getString("cedula"),resultado.getString("fecha"),resultado.getString("fechaR"),resultado.getString("foto")));
+                juga.add(Usuarios.crear(resultado.getString("nombre"),resultado.getString("apellido"),resultado.getInt("edad"),resultado.getString("cedula"),resultado.getString("fecha_N"),resultado.getString("fecha"),resultado.getString("foto")));
+            }
+
+            sentenciaP.close();
+            database.close();
+
+            return juga;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return juga;
+    } 
+    
+    public static ArrayList<Usuarios> obtenerTodos3() {
+        ArrayList<Usuarios> juga = new ArrayList<Usuarios>();
+
+        try {
+            String query = "SELECT * FROM registros WHERE edad between 16 and 24;";
+            PreparedStatement sentenciaP = database.open().prepareStatement(query);
+            ResultSet resultado = sentenciaP.executeQuery();
+
+            while (resultado.next()) {
+  //String nombre, String apellido, int edad, String cedula,String fecha,String fechaR,String foto
+                juga.add(Usuarios.crear(resultado.getString("nombre"),resultado.getString("apellido"),resultado.getInt("edad"),resultado.getString("cedula"),resultado.getString("fecha_N"),resultado.getString("fecha"),resultado.getString("foto")));
             }
 
             sentenciaP.close();
@@ -120,5 +144,28 @@ public class repositorio {
     } 
     
     
+    public static ArrayList<Usuarios> obtenerTodos4() {
+        ArrayList<Usuarios> juga = new ArrayList<Usuarios>();
+
+        try {
+            String query = "SELECT * FROM registros WHERE edad between 25 and 50;";
+            PreparedStatement sentenciaP = database.open().prepareStatement(query);
+            ResultSet resultado = sentenciaP.executeQuery();
+
+            while (resultado.next()) {
+  //String nombre, String apellido, int edad, String cedula,String fecha,String fechaR,String foto
+                juga.add(Usuarios.crear(resultado.getString("nombre"),resultado.getString("apellido"),resultado.getInt("edad"),resultado.getString("cedula"),resultado.getString("fecha_N"),resultado.getString("fecha"),resultado.getString("foto")));
+            }
+
+            sentenciaP.close();
+            database.close();
+
+            return juga;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return juga;
+    } 
     
 }

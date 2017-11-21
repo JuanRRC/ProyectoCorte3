@@ -23,14 +23,8 @@ public class Tablas_Datos extends javax.swing.JPanel {
 
     private Usuarios persona;
    
-    
-    Connection cn;
-    PreparedStatement ps;
-    ResultSet rs;
-    ResultSetMetaData rsm;
-    DefaultTableModel dtm;
-    
-    
+    private DefaultTableModel table_model,table_model2,table_model3;
+   
     
     /**
      * Creates new form Tablas_Datos
@@ -39,7 +33,69 @@ public class Tablas_Datos extends javax.swing.JPanel {
         initComponents();
     }
 
-      
+    public void setTableModel(DefaultTableModel table_model){
+        this.table_model = table_model;
+        System.out.println("entre a settablemodel");
+    }
+    
+    public void setTableModel2(DefaultTableModel table_model){
+        this.table_model2 = table_model;
+        System.out.println("entre a settablemodel");
+    }
+    
+    public void setTableModel3(DefaultTableModel table_model){
+        this.table_model3 = table_model;
+        System.out.println("entre a settablemodel");
+    }
+    
+    public void refreshTableModel()
+    {
+        ArrayList<Usuarios> lista_personas = repositorio.obtenerTodos2();
+        while (table_model.getRowCount() > 0) {
+            table_model.removeRow(0);
+        }
+        
+        for(Usuarios p : lista_personas)
+        {
+            String[] data = {p.getNombre(),p.getApellido(),Integer.toString(p.getEdad())};
+            table_model.addRow(data);
+            System.out.println("entre a refresh");
+        }
+    }  
+    
+    public void refreshTableModel2()
+    {
+        ArrayList<Usuarios> lista_personas = repositorio.obtenerTodos3();
+        while (table_model2.getRowCount() > 0) {
+            table_model2.removeRow(0);
+        }
+        
+        for(Usuarios p : lista_personas)
+        {
+            String[] data = {p.getNombre(),p.getApellido(),Integer.toString(p.getEdad()),p.getCedula()};
+            table_model2.addRow(data);
+            System.out.println("entre a refresh");
+        }
+    }
+    
+    
+    public void refreshTableModel3()
+    {
+        ArrayList<Usuarios> lista_personas = repositorio.obtenerTodos4();
+        while (table_model3.getRowCount() > 0) {
+            table_model3.removeRow(0);
+        }
+        
+        for(Usuarios p : lista_personas)
+        {
+            String[] data = {p.getNombre(),p.getApellido(),Integer.toString(p.getEdad()),p.getCedula()};
+            table_model3.addRow(data);
+            System.out.println("entre a refresh");
+        }
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,77 +105,7 @@ public class Tablas_Datos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel4 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        infantil = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        juvenil = new javax.swing.JTable();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        mayores = new javax.swing.JTable();
         actualizar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-
-        jLabel4.setText("Mayores :25-50 años");
-
-        infantil.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Nombre", "Apellido", "Edad"
-            }
-        ));
-        jScrollPane1.setViewportView(infantil);
-
-        juvenil.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Nombre", "Apellido", "Edad", "Cedula"
-            }
-        ));
-        jScrollPane2.setViewportView(juvenil);
-
-        mayores.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Nombre", "Apellido", "Edad", "Cedula"
-            }
-        ));
-        jScrollPane3.setViewportView(mayores);
 
         actualizar.setText("Actualizar");
         actualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -128,72 +114,35 @@ public class Tablas_Datos extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("Categorias ");
-
-        jLabel2.setText("Infantil: 5-15 años");
-
-        jLabel3.setText("Juvenil 16-24 años");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jScrollPane3)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addContainerGap(174, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(72, 72, 72)
                 .addComponent(actualizar)
-                .addGap(54, 54, 54))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(45, 45, 45)
                 .addComponent(actualizar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
         // TODO add your handling code here:
        
+       this.setVisible(false);
+       Inicio i = new Inicio();
+       i.setVisible(true);
+      
     }//GEN-LAST:event_actualizarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar;
-    private javax.swing.JTable infantil;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable juvenil;
-    private javax.swing.JTable mayores;
     // End of variables declaration//GEN-END:variables
 }

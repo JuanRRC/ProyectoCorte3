@@ -6,6 +6,7 @@
 package Administrador;
 
 import Repositorio.Usuarios;
+import Repositorio.repositorio;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,31 +19,16 @@ public class tablas extends javax.swing.JFrame {
     
     Usuarios usuario;
     
-    private DefaultTableModel table_model_personas;
+    private DefaultTableModel table_model;
     /**
      * Creates new form tablas
      */
     public tablas() {
         initComponents();
+        configComponents();
     }
 
-    public void setTableModel(DefaultTableModel table_model_personas){
-        this.table_model_personas = table_model_personas;
-    }
-    
-    public void refreshTableModel()
-    {
-        ArrayList<Persona> lista_personas = Repositorio.obtenerTodos();
-        while (table_model_personas.getRowCount() > 0) {
-            table_model_personas.removeRow(0);
-        }
-        
-        for(Persona p : lista_personas)
-        {
-            String[] data = {Integer.toString(p.getId()), p.getDocumento(), p.getNombre(),p.getApellido(), p.getTelefono(), p.getEmail()};
-            table_model_personas.addRow(data);
-        }
-    }
+   
     
     
     /**
@@ -64,6 +50,7 @@ public class tablas extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tabla_mayores = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        tablas_Datos1 = new Administrador.Tablas_Datos();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -137,7 +124,10 @@ public class tablas extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 491, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(427, Short.MAX_VALUE)
+                .addComponent(tablas_Datos1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -149,11 +139,14 @@ public class tablas extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addComponent(jLabel3)
                         .addComponent(jLabel4))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addContainerGap(108, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 452, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(412, Short.MAX_VALUE)
+                .addComponent(tablas_Datos1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -170,7 +163,7 @@ public class tablas extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(30, Short.MAX_VALUE)))
+                    .addContainerGap(76, Short.MAX_VALUE)))
         );
 
         pack();
@@ -210,20 +203,40 @@ public class tablas extends javax.swing.JFrame {
             }
         });
     }
-
+    
     private void configComponents() {
-        DefaultTableModel table_model_personas = new DefaultTableModel();
-        table_model_personas.addColumn("Id");
-        table_model_personas.addColumn("Documento");
-        table_model_personas.addColumn("Nombre");
-        table_model_personas.addColumn("apellido");
-        table_model_personas.addColumn("Teléfono");
-        table_model_personas.addColumn("Email");
+        DefaultTableModel table_model1 = new DefaultTableModel();
+        table_model1.addColumn("Nombre");
+        table_model1.addColumn("Apellido");
+        table_model1.addColumn("Edad");
         
-        tabla_personas.setModel(table_model_personas);
-        panel_personas.setTableModel(table_model_personas);
-        panel_personas.refreshTableModel();
+        tabla_infantil.setModel(table_model1);
+        tablas_Datos1.setTableModel(table_model1);
+        tablas_Datos1.refreshTableModel();
+        
+        DefaultTableModel table_model2 = new DefaultTableModel();
+        table_model2.addColumn("Nombre");
+        table_model2.addColumn("Apellido");
+        table_model2.addColumn("Edad");
+        table_model2.addColumn("Cedula");
+        
+        tabla_juvenil.setModel(table_model2);
+        tablas_Datos1.setTableModel2(table_model2);
+        tablas_Datos1.refreshTableModel2();
+        
+        DefaultTableModel table_model3 = new DefaultTableModel();
+        table_model3.addColumn("Nombre");
+        table_model3.addColumn("Apellido");
+        table_model3.addColumn("Edad");
+        table_model3.addColumn("Cedula");
+        
+        tabla_mayores.setModel(table_model3);
+        tablas_Datos1.setTableModel3(table_model3);
+        tablas_Datos1.refreshTableModel3();
+        
     }
+    
+    
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -237,5 +250,6 @@ public class tablas extends javax.swing.JFrame {
     private javax.swing.JTable tabla_infantil;
     private javax.swing.JTable tabla_juvenil;
     private javax.swing.JTable tabla_mayores;
+    private Administrador.Tablas_Datos tablas_Datos1;
     // End of variables declaration//GEN-END:variables
 }

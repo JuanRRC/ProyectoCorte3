@@ -5,17 +5,25 @@
  */
 package space;
 
+import Logica.CargarImagen;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
 import Repositorio.*;
+import java.awt.Image;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 /**
- *
- * @author Clint
+ * JPanel de registro que contiene los campos a llenar y sus validaciones para ser enviados a la base de datos
+ * @author Juan Ricardo Rodriguez Campos
+ * @author Juan David Reyes
  */
 public class Registro extends javax.swing.JPanel {
 
@@ -52,7 +60,6 @@ public class Registro extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         fecha = new com.toedter.calendar.JDateChooser();
-        jLabel6 = new javax.swing.JLabel();
         nombre = new javax.swing.JTextField();
         apellido = new javax.swing.JTextField();
         edad = new javax.swing.JTextField();
@@ -62,6 +69,10 @@ public class Registro extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         usuario = new javax.swing.JTextField();
         contraseña = new javax.swing.JTextField();
+        foto = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setText("Nombre:");
 
@@ -73,11 +84,14 @@ public class Registro extends javax.swing.JPanel {
 
         jLabel5.setText("Fecha de nacimiento:");
 
-        jLabel6.setText("Foto");
-
         nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreActionPerformed(evt);
+            }
+        });
+        nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombreKeyTyped(evt);
             }
         });
 
@@ -86,10 +100,26 @@ public class Registro extends javax.swing.JPanel {
                 apellidoActionPerformed(evt);
             }
         });
+        apellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                apellidoKeyTyped(evt);
+            }
+        });
 
         edad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edadActionPerformed(evt);
+            }
+        });
+        edad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                edadKeyTyped(evt);
+            }
+        });
+
+        cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cedulaKeyTyped(evt);
             }
         });
 
@@ -103,6 +133,22 @@ public class Registro extends javax.swing.JPanel {
         jLabel7.setText("Nombre de Usuario:");
 
         jLabel8.setText("Contraseña:");
+
+        usuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                usuarioKeyTyped(evt);
+            }
+        });
+
+        foto.setBackground(new java.awt.Color(204, 204, 204));
+        foto.setText("                FOTO");
+
+        jButton1.setText("Cargar ");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -119,7 +165,6 @@ public class Registro extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(nombre))
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -131,19 +176,25 @@ public class Registro extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(85, 85, 85)
+                                .addComponent(cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel6))))
-                .addContainerGap(65, Short.MAX_VALUE))
+                                .addGap(44, 44, 44)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(121, 121, 121)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(foto, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
+                                .addGap(3, 3, 3)))))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,22 +211,26 @@ public class Registro extends javax.swing.JPanel {
                     .addComponent(apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(cedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(cedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(foto, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(registrar)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -190,9 +245,18 @@ public class Registro extends javax.swing.JPanel {
     private void edadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_edadActionPerformed
-
+/**
+ * Aqui se realiza la captura y envio de datos ingresados en el formulario
+ * @param evt 
+ */
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
-
+        if( nombre.getText().isEmpty() ||
+            apellido.getText().isEmpty() || edad.getText().isEmpty()||
+            cedula.getText().isEmpty() || 
+            usuario.getText().isEmpty() || contraseña.getText().isEmpty()
+        ){
+            JOptionPane.showMessageDialog(this, "Por favor diligencie todo el formulario", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
         // TODO add your handling code here:
                     LocalDateTime fecha_actual = LocalDateTime.now();
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyy-MM-HH:mm");
@@ -227,8 +291,110 @@ public class Registro extends javax.swing.JPanel {
                     
                     JOptionPane.showMessageDialog(this, "Persona creada satisfactoriamente", "Bien", JOptionPane.INFORMATION_MESSAGE);
                     
-        
+        }
     }//GEN-LAST:event_registrarActionPerformed
+
+    private void nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar(); 
+             
+         
+          if(Character.isDigit(c)) { 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+                        
+          } 
+    }//GEN-LAST:event_nombreKeyTyped
+
+    private void apellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apellidoKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar(); 
+             
+         
+          if(Character.isDigit(c)) { 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+                           
+          } 
+    }//GEN-LAST:event_apellidoKeyTyped
+
+    private void usuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usuarioKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar(); 
+             
+         
+          if(Character.isDigit(c)) { 
+              getToolkit().beep(); 
+               
+              evt.consume();              
+          } 
+    }//GEN-LAST:event_usuarioKeyTyped
+
+    private void edadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edadKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar(); 
+             
+         
+          if(Character.isLetter(c)) { 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+                
+               
+          } 
+        
+    }//GEN-LAST:event_edadKeyTyped
+
+    private void cedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cedulaKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar(); 
+             
+         
+          if(Character.isLetter(c)) { 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+                
+               
+          } 
+    }//GEN-LAST:event_cedulaKeyTyped
+    /**
+     * 
+     */
+    File fichero;
+    /**
+     * accion para cargar la fotografia del usuario
+     * @param evt 
+     */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int resultado;
+
+
+    CargarImagen ventana = new CargarImagen();
+
+    FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG y PNG","jpg","png");
+
+    ventana.cargarfoto.setFileFilter(filtro);
+
+    resultado= ventana.cargarfoto.showOpenDialog(null);
+
+
+    if (JFileChooser.APPROVE_OPTION == resultado){
+        fichero = ventana.cargarfoto.getSelectedFile();
+        try{
+               ImageIcon icon = new ImageIcon(fichero.toString());
+               Icon icono = new ImageIcon(icon.getImage().getScaledInstance(foto.getWidth(), foto.getHeight(), Image.SCALE_DEFAULT));
+               foto.setText(null);
+               foto.setIcon( icono );
+        }catch(Exception ex){
+           JOptionPane.showMessageDialog(null, "Error abriendo la                   imagen "+ ex);
+                 
+        }    
+ }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -237,12 +403,13 @@ public class Registro extends javax.swing.JPanel {
     private javax.swing.JTextField contraseña;
     private javax.swing.JTextField edad;
     private com.toedter.calendar.JDateChooser fecha;
+    private javax.swing.JLabel foto;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField nombre;

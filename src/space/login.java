@@ -20,8 +20,9 @@ import Logica.*;
 import juego.*;
 
 /**
- *
- * @author Clint
+ * JPanel de login que valida que el usuario se encuentre registrado en la base de datos por medio de un usuario y contraseña
+ * @author Juan Ricardo Rodriguez Campos
+ * @author Juan David Reyes
  */
 public class login extends javax.swing.JPanel {
 
@@ -119,6 +120,12 @@ public class login extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarActionPerformed
+        
+        if( 
+            usuario.getText().isEmpty() || contraseña.getText().isEmpty()
+        ){
+            JOptionPane.showMessageDialog(this, "Por favor ingrese los datos en ambos campos", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
         // TODO add your handling code here:
         System.out.println("entre");
         System.out.println("ITERATOR");
@@ -131,13 +138,13 @@ public class login extends javax.swing.JPanel {
         }else{
             if(datos(nom,contra)==true){
                 this.setVisible(false);
-                //JuegoN p = new JuegoN();
-                //p.setVisible(true);
-                Prueba p = new Prueba();
+                JuegoN p = new JuegoN();
                 p.setVisible(true);
+                
+               
             }
         }
-        
+        } 
     }//GEN-LAST:event_iniciarActionPerformed
 
 
