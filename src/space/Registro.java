@@ -220,7 +220,7 @@ public class Registro extends javax.swing.JPanel {
                     //String nombre, String apellido, int edad, String cedula, String fecha,String fechaR,String foto
                     cliente = Usuarios.crear(nom, ape, ed, ced, fecha2, fecha1, nom);
                     repositorio.crear(cliente);
-                    
+                    jugador= Jugadores.crear(cont, nom);
                     repositorio.crearJ(jugador);
                     String datos=usu+con;
                     lista.add(datos);

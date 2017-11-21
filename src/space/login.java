@@ -13,7 +13,11 @@ import java.util.Iterator;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import juego.*;
+import Principal.*;
 import space.*;
+import Grafico.*;
+import Logica.*;
+import juego.*;
 
 /**
  *
@@ -127,9 +131,10 @@ public class login extends javax.swing.JPanel {
         }else{
             if(datos(nom,contra)==true){
                 this.setVisible(false);
-                Principal p = new Principal();
+                //JuegoN p = new JuegoN();
+                //p.setVisible(true);
+                Prueba p = new Prueba();
                 p.setVisible(true);
-                
             }
         }
         

@@ -8,7 +8,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import juego.Principal;
+import Logica.*;
+import juego.*;
 
 /**
  * Clase posicion que contiene los atributos y metodos que hacen posible visualizar el movimiento de las balas disparadas por el cañon
@@ -19,9 +20,9 @@ public class posicion extends Thread{
     
     
     int i=0;
-    JLabel cañon,cubo,dis;
+    JLabel enemigo,nave,dis;
     int x,y;
-    Principal principal;
+    JuegoN principal;
 /**
  * Constructor de la clase posicion que recibe como parametros para poder visualizar el movimiento realizado por la bala de cañon
  * @param bala
@@ -30,9 +31,9 @@ public class posicion extends Thread{
  * @param cubo
  * @param dis 
  */    
-    public posicion(JLabel cañon,JLabel cubo,JLabel dis){
-        this.cubo=cubo;
-        this.cañon=cañon;
+    public posicion(JLabel enemigo,JLabel nave,JLabel dis){
+        this.nave=nave;
+        this.enemigo=enemigo;
         this.dis=dis;
         this.x=x;
         this.y=y;
@@ -44,8 +45,8 @@ public class posicion extends Thread{
     public void datos(){
         
         
-        System.out.println("X :"+cañon.getX());
-        System.out.println("Y :"+cañon.getY());
+        System.out.println("X :"+enemigo.getX());
+        System.out.println("Y :"+enemigo.getY());
         
        
         
@@ -61,22 +62,150 @@ public class posicion extends Thread{
         int p=0;
        
             try {
-                for(i=0;i<600;i++){
+                for(i=0;i<400;i++){
                     
                 
-                cañon.setLocation(i,cañon.getY());
+                enemigo.setLocation(i,enemigo.getY());
                 sleep(5);               
                
                 }
                 
-                for(i=cañon.getX();i>0;i--){
+                enemigo.setLocation(400, enemigo.getY()+20);
+                for(i=enemigo.getX();i>0;i--){
                     
                 
-                cañon.setLocation(i,cañon.getY()+2);
+                enemigo.setLocation(i,enemigo.getY());
                 sleep(5);               
                
                 }
                 
+                enemigo.setLocation(0, enemigo.getY()+20);
+                for(i=0;i<400;i++){
+                    
+                
+                enemigo.setLocation(i,enemigo.getY());
+                sleep(5);               
+               
+                }
+                
+                enemigo.setLocation(400, enemigo.getY()+20);
+                for(i=enemigo.getX();i>0;i--){
+                    
+                
+                enemigo.setLocation(i,enemigo.getY());
+                sleep(5);               
+               
+                }
+                
+                enemigo.setLocation(0, enemigo.getY()+20);
+                for(i=0;i<400;i++){
+                    
+                
+                enemigo.setLocation(i,enemigo.getY());
+                sleep(5);               
+               
+                }
+                
+                enemigo.setLocation(400, enemigo.getY()+20);
+                for(i=enemigo.getX();i>0;i--){
+                    
+                
+                enemigo.setLocation(i,enemigo.getY());
+                sleep(5);               
+               
+                }
+                
+                enemigo.setLocation(0, enemigo.getY()+20);
+                for(i=0;i<400;i++){
+                    
+                
+                enemigo.setLocation(i,enemigo.getY());
+                sleep(5);               
+               
+                }
+                
+                enemigo.setLocation(400, enemigo.getY()+20);
+                for(i=enemigo.getX();i>0;i--){
+                    
+                
+                enemigo.setLocation(i,enemigo.getY());
+                sleep(5);               
+               
+                }
+                
+                
+                enemigo.setLocation(0, enemigo.getY()+20);
+                for(i=0;i<400;i++){
+                    
+                
+                enemigo.setLocation(i,enemigo.getY());
+                sleep(5);               
+               
+                }
+                
+                enemigo.setLocation(400, enemigo.getY()+20);
+                for(i=enemigo.getX();i>0;i--){
+                    
+                
+                enemigo.setLocation(i,enemigo.getY());
+                sleep(5);               
+               
+                }
+                
+                
+                enemigo.setLocation(0, enemigo.getY()+20);
+                for(i=0;i<400;i++){
+                    
+                
+                enemigo.setLocation(i,enemigo.getY());
+                sleep(5);               
+               
+                }
+                
+                enemigo.setLocation(400, enemigo.getY()+20);
+                for(i=enemigo.getX();i>0;i--){
+                    
+                
+                enemigo.setLocation(i,enemigo.getY());
+                sleep(5);               
+               
+                }
+                
+                enemigo.setLocation(0, enemigo.getY()+20);
+                for(i=0;i<400;i++){
+                    
+                
+                enemigo.setLocation(i,enemigo.getY());
+                sleep(5);               
+               
+                }
+                
+                enemigo.setLocation(400, enemigo.getY()+20);
+                for(i=enemigo.getX();i>0;i--){
+                    
+                
+                enemigo.setLocation(i,enemigo.getY());
+                sleep(5);               
+               
+                }
+                
+                enemigo.setLocation(0, enemigo.getY()+20);
+                for(i=0;i<400;i++){
+                    
+                
+                enemigo.setLocation(i,enemigo.getY());
+                sleep(5);               
+               
+                }
+                
+                enemigo.setLocation(400, enemigo.getY()+20);
+                for(i=enemigo.getX();i>0;i--){
+                    
+                
+                enemigo.setLocation(i,enemigo.getY());
+                sleep(5);               
+               
+                }
                 
                 
             } catch (InterruptedException ex) {

@@ -95,7 +95,29 @@ public class repositorio {
         return juga;
     } 
     
+       public static ArrayList<Usuarios> obtenerTodos2() {
+        ArrayList<Usuarios> juga = new ArrayList<Usuarios>();
 
+        try {
+            String query = "SELECT * FROM registros;";
+            PreparedStatement sentenciaP = database.open().prepareStatement(query);
+            ResultSet resultado = sentenciaP.executeQuery();
+
+            while (resultado.next()) {
+  //String nombre, String apellido, int edad, String cedula,String fecha,String fechaR,String foto
+                juga.add(Usuarios.crear(resultado.getString("nombre"),resultado.getString("apellido"),resultado.getInt("edad"),resultado.getString("cedula"),resultado.getString("fecha"),resultado.getString("fechaR"),resultado.getString("foto")));
+            }
+
+            sentenciaP.close();
+            database.close();
+
+            return juga;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return juga;
+    } 
     
     
     

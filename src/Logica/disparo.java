@@ -6,7 +6,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import juego.Principal;
+import Logica.*;
+import juego.*;
+
 
 /**
  * metodo disparo que contiene el hilo que hace posible la visualizacion del disparo realizado por el cubo.
@@ -16,17 +18,18 @@ import juego.Principal;
 public class disparo extends Thread{
     
     int i=0;
-    JLabel cubo,dis;
+    JLabel nave,dis,enemigo;
     int x,y;
-    Principal principal;
+    JuegoN principal;
     /**
      * Metodo constructor de la clase disparo.
      * @param cubo
      * @param dis 
      */
-    public disparo(JLabel cubo,JLabel dis){
-        this.cubo=cubo;
+    public disparo(JLabel nave,JLabel dis,JLabel enemigo){
+        this.nave=nave;
         this.dis=dis;
+        this.enemigo=enemigo;
         this.x=x;
         this.y=y;
         
@@ -51,14 +54,17 @@ public class disparo extends Thread{
         
         int n;
         int p=0;
-        int x = cubo.getX();
+        int x = nave.getX();
             try {
                 for(i=400;i>1;i--){
                     dis.setLocation(x,i);
                     sleep(5);
+                    if((dis.getY()==enemigo.getX())){
+                        
+                         System.out.println("posicion enemigo en X "+enemigo.getX());
+                    }
                 }
-                System.out.println("posicion disparo en Y "+dis.getY());
-                System.out.println("posicion disparo en X "+dis.getX());
+                
                 
             } catch (InterruptedException ex) {
                 Logger.getLogger(posicion.class.getName()).log(Level.SEVERE, null, ex);

@@ -6,27 +6,27 @@
 package Principal;
 
 import Grafico.NaveGrafico;
-import Grafico.Panel;
 import Grafico.RectanguloGrafico;
 import Grafico.Ventana;
+import Grafico.*;
 import Logica2.Coordenada;
 import java.awt.Color;
 import java.util.ArrayList;
 
 /**
  *
- * @author JUAN DAVID
+ * @author Clint
  */
-public class main {
-        public static int Aleatorio(int Max,int Min){
+public class PanelJuego {
+    public static int Aleatorio(int Max,int Min){
         return(int)(Math.random() * (Max-Min));
     }
-    public static void main(String[] args){
     
+    public PanelJuego(){
+        
         /**
             * arreglo se mete al panel y se muestra en la ventana
             */
-        
            Ventana nuestraventana = new Ventana("juego");
            
             /**
@@ -84,8 +84,10 @@ public class main {
                 nuestraventana.setSize(800,600);
                 nuestraventana.setBackground(Color.darkGray);
                 nuestraventana.setVisible(true);
-                nuestroPanel.run
-        ();
-      
+                nuestroPanel.run();
+        
+       
     }
+    
+    
 }
