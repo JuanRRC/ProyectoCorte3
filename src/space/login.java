@@ -121,6 +121,7 @@ public class login extends javax.swing.JPanel {
 
     private void iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarActionPerformed
         
+        
         if( 
             usuario.getText().isEmpty() || contraseña.getText().isEmpty()
         ){
@@ -138,8 +139,10 @@ public class login extends javax.swing.JPanel {
         }else{
             if(datos(nom,contra)==true){
                 this.setVisible(false);
-                JuegoN p = new JuegoN();
-                p.setVisible(true);
+                //JuegoN p = new JuegoN();
+                //p.setVisible(true);
+                
+                JuegoP N = new JuegoP();
                 
                
             }

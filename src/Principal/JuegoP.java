@@ -16,15 +16,12 @@ import java.util.ArrayList;
 
 /**
  *
- * @author JUAN DAVID
+ * @author Clint
  */
-public class main {
-    public static int Aleatorio(int Max,int Min){
-        return(int)(Math.random() * (Max-Min));
-    }
-    public static void main(String[] args){
-        
-        Ventana nuestraventana = new Ventana("juego");
+public class JuegoP {
+    
+    public JuegoP(){
+    Ventana nuestraventana = new Ventana("juego");
         ArrayList ArregloDeobjetos = new ArrayList();
         Coordenada cor1 = new Coordenada(250,250);
         Coordenada cor2 = new Coordenada(350,350);
@@ -118,7 +115,6 @@ public class main {
         nuestraventana.setBackground(Color.darkGray);
         nuestraventana.setVisible(true);
         nuestroPanel.run ();
-        
-        
-    }
+}
+    
 }
